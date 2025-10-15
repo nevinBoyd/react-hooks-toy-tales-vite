@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
-// creates new toy for backend
 function ToyForm({ onAddToy }) {
-  // track input values  
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
 
-  // submissions 
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -16,7 +13,6 @@ function ToyForm({ onAddToy }) {
       likes: 0,
     };
 
-    // send post request    
     fetch("http://localhost:3000/toys", {
       method: "POST",
       headers: {
@@ -32,12 +28,10 @@ function ToyForm({ onAddToy }) {
       });
   }
 
-  // inputs for toy name, image, and submit button  
   return (
     <div className="container">
       <form className="add-toy-form" onSubmit={handleSubmit}>
         <h3>Create a toy!</h3>
-
         <input
           type="text"
           name="name"
@@ -47,7 +41,6 @@ function ToyForm({ onAddToy }) {
           onChange={(e) => setName(e.target.value)}
         />
         <br />
-
         <input
           type="text"
           name="image"
@@ -57,7 +50,6 @@ function ToyForm({ onAddToy }) {
           onChange={(e) => setImage(e.target.value)}
         />
         <br />
-
         <input
           type="submit"
           name="submit"
